@@ -78,4 +78,13 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		return TaotaoResult.ok(contentCategory);
 	}
 
+	@Override
+	public TaotaoResult delContentCategory(Long id) {
+		int result = contentCategoryMapper.deleteByPrimaryKey(id);
+		if(result > 0){
+			return TaotaoResult.ok();
+		}
+		return TaotaoResult.build(404, "删除失败");
+	}
+
 }
